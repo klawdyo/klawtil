@@ -461,10 +461,37 @@ test("removeFromPosition", () => {
   expect(removeFromPosition("AAACBBB", 3, 4)).toBe("AAABBB");
 });
 
+import { removeSpecialChars } from './main';
+test("removeSpecialChars", () => {
+  expect(removeSpecialChars('(84) 9 9988-7766')).toBe('84999887766');
+
+});
+
 import { applyMask } from "./main";
 test("applyMask", () => {
-  expect(applyMask("59650000", "00.000-000")).toBe("59.650-000");
-  expect(applyMask("99877665544", "(00) 0 0000-0000")).toBe("(99) 8 7766-5544");
+
+  const possibilities = [
+    {
+      input: '59650000',
+      mask: '00.000-000',
+      expected: '59.650-000'
+    },
+    {
+      input: '99877665544',
+      mask: '(00) 0 0000-0000',
+      expected: '(99) 8 7766-5544'
+    },
+    {
+      input: 'EK2KZZUJ000148',
+      mask: '00.000.000/0000-00',
+      expected: 'EK.2KZ.ZUJ/0001-48'
+    },
+  ]
+
+  for (const possibility of possibilities) {
+    expect(applyMask(possibility.input, possibility.mask)).toBe(possibility.expected);
+  }
+
 });
 
 import { randomLetter } from "./main";
@@ -614,7 +641,7 @@ test("timeUUID - executa 10 mil vezes", () => {
   let count = 0;
   const list: string[] = [];
   while (count < num) {
-    const uuid = timeUUID();    
+    const uuid = timeUUID();
 
     // Adiciona à lista de gerados
     list.push(uuid);

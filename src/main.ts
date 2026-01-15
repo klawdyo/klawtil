@@ -957,6 +957,13 @@ export function applyVars(
 }
 
 /**
+ * Remove specialChars
+ */
+export function removeSpecialChars(value: string): string {
+  return value.replace(/([^0-9a-z]+)/ig, '')
+}
+
+/**
  * applyMask()
  * Aplica uma máscara a uma string
  *
@@ -970,8 +977,8 @@ export function applyVars(
  *
  */
 export function applyMask(value: string | number, mask: string): string {
-  const maskLen = clearNumber(mask).length;
-  let masked = clearNumber(value, maskLen);
+  // const maskLen = removeSpecialChars(mask).length;
+  let masked = removeSpecialChars(String(value));
   const specialChars = ["/", "-", ".", "(", ")", " "];
 
   for (let position = 0; position < mask.length; position += 1) {
