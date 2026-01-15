@@ -957,6 +957,13 @@ export function applyVars(
 }
 
 /**
+ * Remove specialChars
+ */
+export function removeSpecialChars(value: string): string {
+  return value.replace(/([^0-9a-z]+)/ig, '')
+}
+
+/**
  * applyMask()
  * Aplica uma máscara a uma string
  *
@@ -970,8 +977,8 @@ export function applyVars(
  *
  */
 export function applyMask(value: string | number, mask: string): string {
-  const maskLen = clearNumber(mask).length;
-  let masked = clearNumber(value, maskLen);
+  // const maskLen = removeSpecialChars(mask).length;
+  let masked = removeSpecialChars(String(value));
   const specialChars = ["/", "-", ".", "(", ")", " "];
 
   for (let position = 0; position < mask.length; position += 1) {
@@ -1136,21 +1143,16 @@ export function timeUUID() {
     .slice(0, 16)
     .padEnd(16, "0");
 
-  // console.log({ group12, milliseconds, perf16 });
-
   // Os demais caracteres do 3, o 4 e o quinto.
   const group345 = [milliseconds, perf16].join("");
 
   const hex1 = parseInt(group12, 10).toString(16);
   const hex2 = parseInt(group345, 10).toString(16);
-  // console.log({ group12, group345 });
 
   const len = 31 - hex1.length - hex2.length;
   const rand = Math.floor(Math.random() * Math.pow(10, len))
     .toString()
     .padStart(len, "0");
-
-  // console.log({ hex1, hex2, rand, len });
 
   const hex = hex1 + hex2 + rand;
 

@@ -482,6 +482,7 @@ removeFromPosition("AAACBBB", 3, 4); // -> AAABBB
 ```js
 applyMask("59650000", "00.000-000"); // -> 59.650-000
 applyMask("99877665544", "(00) 0 0000-0000"); // -> (99) 8 7766-5544
+applyMask('EK2KZZUJ000148', '00.000.000/0000-00'); // -> EK.2KZ.ZUJ/0001-48
 ```
 
 ### applyVars
