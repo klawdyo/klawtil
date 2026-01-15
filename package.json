@@ -19,8 +19,9 @@
   },
   "homepage": "https://github.com/klawdyo/klawtil#readme",
   "scripts": {
-    "test": "jest",
-    "build": "tsc -p tsconfig.json",
+    "test": "npx vitest run",
+    "test:watch": "vitest",
+    "build": "rm -r ./dist & tsc",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
