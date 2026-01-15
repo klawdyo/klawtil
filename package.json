@@ -1,6 +1,6 @@
 {
   "name": "klawtil",
-  "version": "0.16.0",
+  "version": "0.17.0-rc2",
   "description": "Biblioteca de funções úteis",
   "author": "Cláudio Medeiros <contato@klawdyo.com>",
   "license": "MIT",
@@ -12,34 +12,19 @@
   "main": "./dist/tsc/main.js",
   "types": "./dist/tsc/main.d.ts",
   "repository": {
-    "url": "https://github.com/klawdyo/utils"
+    "url": "https://github.com/klawdyo/klawtil"
   },
   "bugs": {
-    "url": "https://github.com/klawdyo/utils/issues"
+    "url": "https://github.com/klawdyo/klawtil/issues"
   },
-  "homepage": "https://github.com/klawdyo/utils#readme",
+  "homepage": "https://github.com/klawdyo/klawtil#readme",
   "scripts": {
-    "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
-    "clean": "rm -rf dist build package",
-    "ts-node": "ts-node",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --collectCoverageFrom=src/**/*.ts --coverage",
-    "docs": "typedoc --entryPoints src/main.ts",
     "build": "tsc -p tsconfig.json",
-    "prepublish": "npm run build && npm run docs"
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.21",
-    "@types/node": "^15.0.1",
-    "@typescript-eslint/eslint-plugin": "^4.19.0",
-    "@typescript-eslint/parser": "^4.19.0",
-    "esbuild": "^0.11.11",
-    "eslint": "^7.22.0",
-    "jest": "^29.7.0",
-    "ts-jest": "^29.1.5",
-    "ts-node": "^9.1.1",
-    "typedoc": "^0.26.3",
-    "typescript": "^4.2.3"
+    "typescript": "^5.6.3",
+    "vitest": "^4.0.17"
   }
 }
