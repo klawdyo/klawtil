@@ -1,6 +1,6 @@
 {
   "name": "klawtil",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Biblioteca de funções úteis",
   "author": "Cláudio Medeiros <contato@klawdyo.com>",
   "license": "MIT",
@@ -9,8 +9,11 @@
     "boilerplate",
     "esbuild"
   ],
-  "main": "./dist/tsc/main.js",
-  "types": "./dist/tsc/main.d.ts",
+  "main": "./dist/main.js",
+  "types": "./dist/main.d.ts",
+  "files": [
+    "dist"
+  ],
   "repository": {
     "url": "https://github.com/klawdyo/klawtil"
   },
@@ -22,7 +25,8 @@
     "test": "npx vitest run",
     "test:watch": "vitest",
     "build": "rm -r ./dist & tsc",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build && npm run smoke-test",
+    "smoke-test": "node scripts/smoke-test.js"
   },
   "devDependencies": {
     "typescript": "^5.6.3",
